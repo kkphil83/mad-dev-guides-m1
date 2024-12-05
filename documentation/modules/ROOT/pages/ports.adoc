@@ -1,11 +1,11 @@
-= Port
+= 포트
 
-Let's take a look at how to enable communication of the container to the outside world by exposing and mapping ports. 
+포트를 노출하고 매핑하여 컨테이너가 외부 세계와 통신할 수 있도록 하는 방법을 살펴보겠습니다. 
 
 
-== Exposing ports
+== 포트 노출
 
-The application running inside your container can be accessed through the port 8080, so let's try it:
+컨테이너 내부에서 실행되는 애플리케이션은 포트 8080을 통해 액세스할 수 있으니 시도해 보겠습니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -13,7 +13,7 @@ The application running inside your container can be accessed through the port 8
 curl localhost:8080/hello
 ----
 
-You should have gotten this output:
+다음과 같은 출력이 나오게 됩니다.:
 
 [.console-output]
 [source,text]
@@ -21,9 +21,9 @@ You should have gotten this output:
 curl: (7) Failed to connect to localhost port 8080: Connection refused
 ----
 
-This is happening because we need to explicitly expose the ports you need, and we didn't do it so far. So let's fix it.
+이 메시지는 지금까지 필요한 포트를 명시적으로 노출하지 않았기 때문에 발생합니다. 이것을 수정해 보겠습니다.
 
-First let's remove the container:
+먼저 컨테이너를 제거해 보겠습니다.:
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]

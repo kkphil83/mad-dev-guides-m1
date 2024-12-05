@@ -1,20 +1,19 @@
-* Requirements
-** xref:setup.adoc[Setup]
+* 요구사항
+** xref:setup.adoc[환경 설정]
 
-* I. Basics
+* I. 초급
 ** xref:containerfile.adoc[Containerfile]
-** xref:imagemanagement.adoc[Image management]
-** xref:runningcontainers.adoc[Running containers]
-** xref:ports.adoc[Ports]
-** xref:env.adoc[Environment variables]
-** xref:inside.adoc[Inside a container]
-** xref:pushing.adoc[Pushing an image to a public registry]
+** xref:imagemanagement.adoc[이미지 관리 ]
+** xref:runningcontainers.adoc[컨테이너 실행]
+** xref:ports.adoc[포트]
+** xref:env.adoc[환경 변수]
+** xref:inside.adoc[컨테이너 내부]
+** xref:pushing.adoc[이미지 레지스트리에 이미지 푸시하기]
 
-* II. Intermediate
+* II. 중급
 ** xref:podman-desktop.adoc[Podman Desktop]
 ** xref:buildah.adoc[Buildah]
 ** xref:skopeo.adoc[Skopeo]
-** xref:jib.adoc[Jib]
 
-* Resources
-** xref:resources.adoc[Containers]
+* 리소스
+** xref:resources.adoc[컨테이너]

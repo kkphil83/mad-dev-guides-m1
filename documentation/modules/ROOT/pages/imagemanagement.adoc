@@ -1,10 +1,10 @@
-= Image Management
+= 이미지 관리
 
-An image can be used to create and run containers. It is like a template, containing instructions on how to build the container. Images are the starting point for any container related activity, and can be thought of as a snapshot in a virtual machine (VM) environment.
+이미지는 컨테이너를 만들고 실행하는 데 사용할 수 있습니다. 컨테이너를 빌드하는 방법에 대한 지침이 포함된 템플릿과 같습니다. 이미지는 컨테이너 관련 활동의 시작점이며 가상 머신(VM) 환경의 스냅샷으로 생각할 수 있습니다.
 
-== Building an image based on a Containerfile (aka Dockerfile)
+== Containerfile (또는 Dockerfile) 기반 이미지 빌드
 
-With the Containerfile that we created in the last step, let's build a container image:
+이전 단계에서 만든 Containerfile을 사용하여 컨테이너 이미지를 빌드해 보겠습니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -12,7 +12,7 @@ With the Containerfile that we created in the last step, let's build a container
 podman build -t my-image .
 ----
 
-You'll see an output like this:
+다음과 같은 출력이 표시됩니다.:
 
 [.console-output]
 [source,text]
@@ -44,9 +44,9 @@ Successfully tagged localhost/my-image:latest
 a8172ead99eece385fa756e85948656896645f7f1848c68dfe498da9d93be073
 ----
 
-== Listing the available images
+== 사용 가능한 이미지 리스트
 
-To see your just created image, just run:
+방금 만든 이미지를 보려면 다음을 실행하세요.:
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -54,7 +54,7 @@ To see your just created image, just run:
 podman image list
 ----
 
-You'll see at least these two outputs:
+최소한 다음 두 가지 출력이 표시됩니다.:
 
 [.console-output]
 [source,text]
@@ -64,29 +64,29 @@ my-image                                     latest              87776d35fc85   
 registry.access.redhat.com/ubi9/openjdk-21-runtime 1.18-4        80786be7434f        3 weeks ago         375 MB
 ----
 
-Your image is the `my-image` and the `registry.access.redhat.com/ubi9/openjdk-21` is the image used to build yours.
+귀하의 이미지는 `my-image` 이며, `registry.access.redhat.com/ubi9/openjdk-21` 는 귀하의 이미지를 빌드하는 데 사용된 이미지입니다.
 
-== Exploring the Desktop interface
+== 데스크톱 인터페이스 탐색
 
-Let's take a look at image management in the Desktop interfaces.
+데스크톱 인터페이스에서 이미지 관리를 살펴보겠습니다.
 
 
 Podman Desktop::
 
-With Podman Desktop, we can see our newly created image in the *Images* tab. We can find information about the newly created image, including the the image ID, tag, creation date, and size of the image. Let's select the image name to see more information about the image.
+*Podman Desktop*을 사용하면 *Images* 탭에서 새로 만든 이미지를 볼 수 있습니다. 이미지 ID, 태그, 생성 날짜, 이미지 크기를 포함하여 새로 만든 이미지에 대한 정보를 찾을 수 있습니다. 이미지 이름을 선택하여 이미지에 대한 자세한 정보를 확인해 보겠습니다.
 
-image::podman-desktop-images.png[alt="Podman Desktop Images tab", align="center"]
+image::pd-0-1.png[alt="Podman Desktop Images tab", align="center"]
 
-We can see information about the image layers, and low-level information about the image in JSON format.
+우리는 JSON 형식의 이미지 레이어에 대한 정보와 이미지에 대한 low-level 정보를 볼 수 있습니다.
 
-image::podman-desktop-image-info.png[alt="Podman Desktop Image Info tab", align="center"]
+image::pd-0-2.png[alt="Podman Desktop Image Info tab", align="center"]
 
 
-For now though, let's stick to the terminal and get a little more comfortable with the command line instructions. 
+지금은 터미널을 사용하고 *podman* CLI에 조금 더 익숙해지도록 하겠습니다.
 
-== Managing images
+== 이미지 관리
 
-The Podman or Docker CLI offer many ways to manage container images. You can find out more by issuing the following help command: 
+Podman 또는 Docker CLI는 컨테이너 이미지를 관리하는 여러 가지 방법을 제공합니다. 다음 help 명령을 실행하여 자세한 내용을 확인할 수 있습니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -130,7 +130,7 @@ Available Commands:
   untag       Remove a name from a local image
 ----
 
-Let's try to remove your just created image:
+방금 만든 이미지를 제거해 보겠습니다.:
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -138,4 +138,4 @@ Let's try to remove your just created image:
 podman image rm my-image
 ----
 
-Great! You're well on your way to becoming a Container Image expert :)
+좋아요! 컨테이너 이미지 전문가가 되는 길로 잘 가고 있습니다 :)
