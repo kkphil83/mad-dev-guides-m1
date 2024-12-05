@@ -3,4 +3,4 @@ title: Module 1 - Assessment and Analysis
 version: main
 nav:
   - modules/ROOT/nav.adoc
-start_page: ROOT:1-introduction.adoc
+start_page: ROOT:index.adoc

@@ -1,0 +1,207 @@
+= Running containers
+
+Let's take a look at running a container, as well as listing running containers, starting/stopping containers, and checking container logs.
+
+== Running a container
+
+As we removed the image on the previous step, we need to build it again:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+podman build -t my-image .
+----
+
+Now we are ready to create a container based on this image. Just run:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+podman create --name my-container my-image
+----
+
+Your container is created. 
+
+== Listing containers
+
+To see your just created container:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+podman ps
+----
+
+Your output is probably something like this:
+
+[.console-output]
+[source,text]
+----
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+----
+
+Why isn't your container in the list if you've just created it?
+
+Because it isn't running, and using plain `podman ps` will only list the running containers. Now try this:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+podman ps -a
+----
+
+Now your output should be something like this:
+
+[.console-output]
+[source,text]
+----
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+ccaadddf1c48        my-image            "java -jar /deployme…"   3 minutes ago       Created                                 my-container
+----
+
+It's listing all containers, no matter the status. Your container is listed as `Created`.
+
+
+== Starting containers
+
+To run the container you've just created, execute this:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+podman start my-container
+----
+
+To check if it's running, try the plain `podman ps` again:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+podman ps
+----
+
+Now your output will be like this:
+
+
+[.console-output]
+[source,text]
+----
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                          NAMES
+ccaadddf1c48        my-image            "java -jar /deployme…"   8 minutes ago       Up 54 seconds       8080/tcp, 8443/tcp, 8778/tcp   my-container
+----
+
+Notice that the status now is `Up 54 seconds`.
+
+== Stopping containers
+
+To stop your container:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+podman stop my-container
+----
+
+== Removing containers
+
+To remove your container:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+podman rm my-container
+----
+
+== Creating and starting a container at once
+
+Instead of creating a container and then starting, you can do it at once:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+podman run --name my-container my-image
+----
+
+You now got an output like this:
+
+[.console-output]
+[source,text]
+----
+INFO exec -a "java" java -Djava.util.logging.manager=org.jboss.logmanager.LogManager -cp "." -jar /deployments/quarkus-run.jar 
+INFO running in /deployments
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2024-05-22 10:53:37,988 INFO  [io.quarkus] (main) tutorial-app 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.10.1) started in 0.455s. Listening on: http://0.0.0.0:8080
+2024-05-22 10:53:37,989 INFO  [io.quarkus] (main) Profile prod activated. 
+2024-05-22 10:53:37,989 INFO  [io.quarkus] (main) Installed features: [cdi, rest, smallrye-context-propagation, vertx]
+----
+
+Notice that your terminal is attached to the container process. If you use `CTRL+C`, the container will stop.
+
+So let's create a detached container. First we remove this one:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+podman rm my-container
+----
+
+And now we create it detached:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+podman run -d --name my-container my-image
+----
+
+== Checking the log of a container
+
+To see what this container is logging, use this:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+podman logs my-container
+----
+
+If you want to keep following the output:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+podman logs -f my-container
+----
+
+Use `CTRL+C` to stop following the log.
+
+// == Exploring the Desktop interfaces
+
+// Let's take a look at running containers in the Desktop interfaces.
+
+// [tabs]
+// ====
+// podman Desktop::
+// +
+// --
+// Using podman Desktop, we can see our container running in the *Containers* tab. Here, we have information about the container, including the the container ID, image name, status, and duration. Let's select the container name to see more information.
+
+// image::podman-desktop-containers.png[alt="podman Desktop Containers tab", align="center"]
+
+// Here, we can see much more about the container, for example a stream of logs just as we were able to view in our terminal. We can also inspect environment variables, use a shell to interact within the container, and view CPU/Memory/Network usage.
+
+// image::podman-desktop-container-info.png[alt="podman Desktop Container Info tab", align="center"]
+// --
+// Podman Desktop::
+// +
+// --
+// Using Podman Desktop, we can see our container running in the *Containers* tab. Here, we have information about the container, including the the image name & duration. Let's select the container name to see more information.
+
+// image::podman-desktop-containers.png[alt="Podman Desktop Containers tab", align="center"]
+
+// Here, we can see much more about the container, for example a stream of logs just as we were able to view in our terminal. We can also inspect environment variables through a JSON format, use a shell to interact within the container, and view CPU/Memory/Network usage.
+
+// image::podman-desktop-container-info.png[alt="Podman Desktop Container Info tab", align="center"]
+// --
+// ====

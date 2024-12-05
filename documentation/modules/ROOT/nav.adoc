@@ -1,3 +1,24 @@
 * xref:1-introduction.adoc[Introduction]
 * xref:2-assessment.adoc[Assessment]
 * xref:3-analyze.adoc[Analyze]
+
+* Requirements
+** xref:setup.adoc[Setup]
+
+* I. Basics
+** xref:containerfile.adoc[Containerfile]
+** xref:imagemanagement.adoc[Image management]
+** xref:runningcontainers.adoc[Running containers]
+** xref:ports.adoc[Ports]
+** xref:env.adoc[Environment variables]
+** xref:inside.adoc[Inside a container]
+** xref:pushing.adoc[Pushing an image to a public registry]
+
+* II. Intermediate
+** xref:podman-desktop.adoc[Podman Desktop]
+** xref:buildah.adoc[Buildah]
+** xref:skopeo.adoc[Skopeo]
+** xref:jib.adoc[Jib]
+
+* Resources
+** xref:resources.adoc[Containers]
