@@ -12,7 +12,7 @@
 podman build -t my-image .
 ----
 
-다음과 같은 출력이 표시됩니다.:
+다음과 같은 출력이 표시됩니다.
 
 [.console-output]
 [source,text]
@@ -46,7 +46,7 @@ a8172ead99eece385fa756e85948656896645f7f1848c68dfe498da9d93be073
 
 == 사용 가능한 이미지 리스트
 
-방금 만든 이미지를 보려면 다음을 실행하세요.:
+방금 만든 이미지를 보려면 다음을 실행하세요.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -54,7 +54,7 @@ a8172ead99eece385fa756e85948656896645f7f1848c68dfe498da9d93be073
 podman image list
 ----
 
-최소한 다음 두 가지 출력이 표시됩니다.:
+최소한 다음 두 가지 출력이 표시됩니다.
 
 [.console-output]
 [source,text]
@@ -130,7 +130,7 @@ Available Commands:
   untag       Remove a name from a local image
 ----
 
-방금 만든 이미지를 제거해 보겠습니다.:
+방금 만든 이미지를 제거해 보겠습니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]

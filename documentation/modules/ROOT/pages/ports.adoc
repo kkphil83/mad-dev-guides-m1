@@ -13,7 +13,7 @@
 curl localhost:8080/hello
 ----
 
-다음과 같은 출력이 나오게 됩니다.:
+다음과 같은 출력이 나오게 됩니다.
 
 [.console-output]
 [source,text]
@@ -23,7 +23,7 @@ curl: (7) Failed to connect to localhost port 8080: Connection refused
 
 이 메시지는 지금까지 필요한 포트를 명시적으로 노출하지 않았기 때문에 발생합니다. 이것을 수정해 보겠습니다.
 
-먼저 컨테이너를 제거해 보겠습니다.:
+먼저 컨테이너를 제거해 보겠습니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -33,12 +33,12 @@ podman rm -f my-container
 
 [TIP]
 ====
-Did you see something different?
+뭔가 다른 것을 보셨나요?
 
-We used the `-f` flag to force the removal of the container even if it's running. Be careful when using it! 
+우리는 컨테이너가 실행 중이더라도 컨테이너를 강제로 제거하기 위해 `-f` 플래그를 사용했습니다. 이것을 사용할 때는 조심하세요!
 ====
 
-Now we re-create the container, but exposing the port 8080:
+이제 컨테이너를 다시 생성하면서 포트 8080을 노출합니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -46,7 +46,7 @@ Now we re-create the container, but exposing the port 8080:
 podman run -d --name my-container -p 8080:8080 my-image
 ----
 
-Let's try to reach the application again:
+다시 한번 응용프로그램에 접속해 보겠습니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -54,7 +54,7 @@ Let's try to reach the application again:
 curl localhost:8080/hello
 ----
 
-You should now see output like this:
+이제 다음과 같은 출력이 표시되어야 합니다.
 
 [.console-output]
 [source,text]
@@ -62,4 +62,4 @@ You should now see output like this:
 Hello from Quarkus REST
 ----
 
-This means that your application is now accessible!
+이제 귀하의 애플리케이션에 접근할 수 있습니다!

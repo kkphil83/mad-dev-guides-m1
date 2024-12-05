@@ -1,10 +1,10 @@
-= Inside a container
+= 컨테이너 내부
 
-You can easily run commands inside a running container, as you do in any other host.
+다른 호스트에서와 마찬가지로, 실행 중인 컨테이너 내에서 명령을 쉽게 실행할 수 있습니다.
 
-== Executing commands inside a container
+== 컨테이너 내부에서 명령 실행
 
-To perform it in our running container, just execute this:
+실행 중인 컨테이너에서 이를 실행하려면 다음을 실행하세요.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -12,7 +12,7 @@ To perform it in our running container, just execute this:
 podman exec -it my-container /bin/bash
 ----
 
-Your terminal prompt should by now look like this:
+이제 터미널 프롬프트는 다음과 같아야 합니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -20,7 +20,7 @@ Your terminal prompt should by now look like this:
 [default@3cef96df8faa ~]$
 ----
 
-What you can do is directly related to what you installed inside your container, but a `curl` works in general:
+`curl`과 같이 컨테이너 내부에 명령어가 설치되어 있으면, 컨테이너 내부에서 실행이 가능합니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -28,7 +28,7 @@ What you can do is directly related to what you installed inside your container,
 curl localhost:8080/hello
 ----
 
-Let's see the .jar of our application:
+애플리케이션의 .jar 파일을 살펴보겠습니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -36,7 +36,7 @@ Let's see the .jar of our application:
 ls /deployments/
 ----
 
-We can also print the VM settings of this container:
+이 컨테이너의 VM 설정을 인쇄할 수도 있습니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -44,7 +44,7 @@ We can also print the VM settings of this container:
 java -XshowSettings:vm -version
 ----
 
-And even check the OS version details:
+OS 버전 세부 정보도 확인하세요.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -52,32 +52,10 @@ And even check the OS version details:
 cat /etc/os-release
 ----
 
-To go back to your previous terminal, just run:
+이전 터미널로 돌아가려면 다음을 실행하세요.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
 ----
 exit
 ----
-
-// == Exploring the Desktop interfaces
-
-// Let's take a look at how we can access the container's terminal from the Desktop interfaces.
-
-// [tabs]
-// ====
-// podman Desktop::
-// +
-// --
-// Within podman Desktop, we can use the *Terminal* to run commands against our running container. First, head to the *Containers* tab, select the container, and choose the *Terminal* tab.
-
-// image::docker-desktop-terminal.png[alt="podman Desktop Terminal tab", align="center"]
-// --
-// Podman Desktop::
-// +
-// --
-// Within Podman Desktop, we can use the *Terminal* to run commands against our running container. First, head to the *Containers* tab, select the container, and choose the *Terminal* tab.
-
-// image::podman-desktop-terminal.png[alt="Podman Desktop Terminal tab", align="center"]
-// --
-// ====

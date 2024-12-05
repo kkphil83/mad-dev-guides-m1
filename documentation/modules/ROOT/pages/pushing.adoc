@@ -1,14 +1,14 @@
-= Pushing an image to a public registry
+= 공개 레지스트리에 이미지 푸시하기
 
-So far you've been working with your container image locally. Now let's take it to a remote registry.
+지금까지 로컬에서 컨테이너 이미지를 작업했습니다. 이제 원격 레지스트리로 가져가 봅시다.
 
-== Tagging an image
+== 이미지 태그 지정
 
-IMPORTANT: Before continuing you will need to have/create a container registry account. You can sign up for a free one at https://quay.io[Quay.io] or the https://hub.docker.com/[Docker Hub]. 
+IMPORTANT: 계속하기 전에 컨테이너 레지스트리 계정을 가지고 있어야 합니다. https://quay.io[Quay.io] 또는 https://hub.docker.com/[Docker Hub] 에서 무료로 가입할 수 있습니다.
 
-First you'll need to tag your image accordingly to the registry and name you gave to your repository. Say for example we create a repository `myrepository`.
+먼저 레지스트리와 저장소에 지정한 이름에 맞게 이미지에 태그를 지정해야 합니다. 예를 들어 `myrepository` 저장소를 만든다고 가정해 보겠습니다.
 
-If you have a Docker Hub account:
+Docker Hub 계정이 있는 경우:
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -16,7 +16,7 @@ If you have a Docker Hub account:
 podman tag my-image docker.io/myrepository/my-image
 ----
 
-If using Quay.io:
+Quay.io를 사용하는 경우:
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -24,11 +24,11 @@ If using Quay.io:
 podman tag my-image quay.io/myrepository/my-image
 ----
 
-IMPORTANT: Make sure to replace `myrepository` with the name of your own repository.
+IMPORTANT: `myrepository` 를 자신의 저장소 이름으로 바꿔야 합니다.
 
 [TIP]
 ====
-If you build your image already using the tag, you won't need to do this step before pushing it. In our case it would be like this:
+아래처럼 이미지를 빌드할 때에 동시에 태크를 만들었다면, 위 단계를 별도로 수행할 필요가 없습니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -38,7 +38,7 @@ podman build -t quay.io/myrepository/my-image .
 
 ====
 
-If you now run `podman images` you'll see something like this:
+`podman images`을 실행하면 다음과 같은 화면이 표시됩니다.
 
 [.console-output]
 [source,text]
@@ -48,9 +48,11 @@ my-image                                     latest              a63dec174904   
 quay.io/myrepository/my-image                latest              a63dec174904        55 minutes ago      516MB
 ----
 
-== Pushing an image
+== 이미지 푸시하기 (옵션)
 
-It's now ready to be pushed. Before doing it, you just need to login into your registry of choice within your terminal:
+이제 푸시할 준비가 되었습니다. 푸시하기 전에 터미널에서 선택한 레지스트리에 로그인해야 합니다.
+
+IMPORTANT: 이 단계는 Quay.io 나 Docker Hub에 계정이 있으신 분만 진행하시고, 계정이 없으신 분께서는 내용만 확인해 주세요.
 
 [tabs]
 ====
@@ -74,7 +76,7 @@ podman login
 --
 ====
 
-And finally you can push it, eg.:
+마지막으로 다음과 같이 푸시할 수 있습니다.
 
 [.console-input]  
 [source,bash,subs="+macros,+attributes"]
@@ -82,7 +84,9 @@ And finally you can push it, eg.:
 podman push quay.io/myrepository/my-image
 ----
 
-You should have an output like this:
+다음과 같은 출력이 나와야 합니다.
+
+
 
 [.console-output]
 [source,text]
@@ -96,4 +100,4 @@ f9ddbcc4e795: Pushed
 latest: digest: sha256:de852b7869b9eff45994b676f0dd98cbfb2b8a76a8b11ca6d06e8f93c344e8c9 size: 1371
 ----
 
-Now if you go to your https://quay.io[Quay.io] or https://hub.docker.com[Docker Hub] account you'll see your image right there.
+이제 https://quay.io[Quay.io] 또는 https://hub.docker.com[Docker Hub] 계정 으로 이동하면 바로 이미지를 볼 수 있습니다.

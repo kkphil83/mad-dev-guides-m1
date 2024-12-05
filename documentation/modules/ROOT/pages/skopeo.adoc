@@ -1,21 +1,25 @@
 = Skopeo
 
-https://github.com/containers/skopeo[Skopeo] is a command line utility that performs operations on container images and image repositories.
-One of the big advantages of Skopeo is not requiring podman installed, it works with no Docker host, or requiring `root` permissions.
+https://github.com/containers/skopeo[Skopeo] 는 컨테이너 이미지와 이미지 저장소에서 작업을 수행하는 명령줄 도구입니다.
+Skopeo의 가장 큰 장점 중 하나는 Docker/Podman을 설치할 필요가 없고 Docker 호스트 없이 작동하거나 root 권한이 필요하지 않다는 것입니다.
 
-The operations you can do with Skopeo are:
+Skopeo로 할 수 있는 작업은 다음과 같습니다.
 
-* Copying an image from and to various storage mechanisms. For example you can copy images from one registry to another, without requiring privilege.
-* Inspecting a remote image showing its properties including its layers, without requiring you to pull the image to the host.
-* Deleting an image from an image repository.
-* Syncing an external image repository to an internal registry for air-gapped deployments.
+* 다양한 저장 메커니즘에서 이미지를 복사합니다. 예를 들어 권한이 필요 없이 하나의 레지스트리에서 다른 레지스트리로 이미지를 복사할 수 있습니다.
+* 호스트로 이미지를 가져오지 않고도 레이어를 포함한 속성을 보여주는 원격 이미지를 검사합니다.
+* 이미지 저장소에서 이미지를 삭제합니다.
+* 에어갭 배포를 위해 외부 이미지 저장소를 내부 레지스트리에 동기화합니다.
 
-When required by the repository, Skopeo can pass the appropriate credentials and certificates for authentication.
+저장소에서 요구될 경우, Skopeo는 인증을 위해 적절한 자격 증명과 인증서를 전달할 수 있습니다.
 
-== Inspecting a Container
+== 준비
 
-With Skopeo, you can inspect container properties without having to download the container locally.
-In a terminal window, run the following command:
+윈도우 터미널 창에서 `wsl` 명령어를 수행하여 리눅스 환경으로 들어갑니다.
+
+== 컨테이너 검사
+
+Skopeo를 사용하면 로컬로 컨테이너를 다운로드하지 않고도 컨테이너 속성을 검사할 수 있습니다. 
+터미널 창에서 다음 명령을 실행합니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -105,13 +109,13 @@ skopeo inspect docker://quay.io/rhdevelopers/quarkus-demo:v1
 }
 ----
 
-== Copying a Containers
+== 컨테이너 복사
 
-Skopeo lets you copy containers from one container registry to anotehr container registry without a Docker host.
-You can copy containers from different sources to different sources, for example, from remote container registry to local directory, or another remote container registry, or local container registry ...
+Skopeo를 사용하면 Docker 호스트 없이도 하나의 컨테이너 레지스트리에서 다른 컨테이너 레지스트리로 컨테이너를 복사할 수 있습니다. 
+예를 들어 원격 컨테이너 레지스트리에서 로컬 디렉토리로, 다른 원격 컨테이너 레지스트리 또는 로컬 컨테이너 레지스트리로 등 다른 소스에서 다른 소스로 컨테이너를 복사할 수 있습니다.
 
-Let's pull a remote container to a local directory.
-In a terminal window, run the following command:
+원격 레지스트리의 컨테이너를 로컬 디렉토리로 가져오겠습니다.
+터미널 창에서 다음 명령을 실행합니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -133,8 +137,8 @@ Writing manifest to image destination
 Storing signatures
 ----
 
-The command created the `quakurs-demo-skopeo` directory with container content stored inside.
-InLinux/MacOS list the folder's content by running:
+이 명령어는 `quakurs-demo-skopeo` 컨테이너의 콘텐츠가 저장된 디렉토리를 생성했습니다.
+다음을 실행하여 폴더의 콘텐츠를 확인해봅니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -158,10 +162,10 @@ drwxr-xr-x  25 asotobu  staff   800B Apr 11 16:36 ..
 -rw-r--r--   1 asotobu  staff    33B Apr 11 16:36 version
 ----
 
-In the previous case, we copied container from a remote registry to local directory.
-Let's copy a container from a remote registry to a local registry (the one running inside Docker/Podman).
+직전에 우리는 원격 레지스트리에서 로컬 디렉토리로 컨테이너를 복사했습니다. 
+원격 레지스트리에서 로컬 레지스트리(Docker/Podman 등 로컬에서 실행 중인 레지스트리)로 컨테이너를 복사해 보겠습니다.
 
-Having a Docker Host running in local machine, run the following command:
+다음 명령을 실행합니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -183,8 +187,7 @@ Writing manifest to image destination
 Storing signatures
 ----
 
-Now, instead of using `dir` in the destination part, we use the `docker-daemon` destination to set the local registry.
-If you run the `podman images` command, you'll see the image downloaded with the `skopeo` tag:
+`podman images` 명령을 실행하면, `skopeo` 태그로 다운로드된 이미지가 표시됩니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -200,12 +203,12 @@ REPOSITORY                                          TAG         IMAGE ID      CR
 docker.io/rhdevelopers/quarkus-demo                 skopeo      e40635aea714  4 years ago   137 MB
 ----
 
-== Copying Between Registries
+== 레지스트리 간 복사
 
-To copy between registries, you need to use the `docker` prefix.
-First of all, let's start a container registry inside Docker Host:
+레지스트리 간에 컨테이너 이미지를 복사하려면 `docker` 접두사를 사용해야 합니다.
+우선 wsl 환경에서 컨테이너 레지스트리를 시작해 보겠습니다.
 
-Run the following command in a terminal window:
+터미널 창에서 다음 명령을 실행합니다. (이미지 레지스트리 기동)
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -213,7 +216,8 @@ Run the following command in a terminal window:
 podman run -ti -p 5000:5000 --restart=always --name registry registry:2
 ----
 
-In a new terminal window, run the `copy` command setting origin to quay.io and the destination, the registry created in the previous step:
+새로운 터미널 창을 열고 `wsl` 명령어를 실행하여 wsl 환경으로 들어갑니다.
+다음처럼 `skopeo copy` 명령을 실행할 때, origin을 quay.io로 설정하고 destination은 위 단계에서 만든 레지스트리로 설정합니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
@@ -235,7 +239,7 @@ Writing manifest to image destination
 Storing signatures
 ----
 
-If you inspect the log lines of the registry container, you'll see that the image has been stored inside the registry:
+레지스트리 컨테이너가 실행되어 있는 터미널의 로그를 검사하면 이미지가 레지스트리 내부에 저장되어 있음을 확인할 수 있습니다.
 
 [.console-output]
 [source,bash,subs="+macros,+attributes"]
@@ -246,13 +250,13 @@ time="2023-04-12T13:29:37.927391556Z" level=info msg="response completed" go.ver
 172.17.0.1 - - [12/Apr/2023:13:29:37 +0000] "PUT /v2/rhdevelopers/quarkus-demo/manifests/skopeo HTTP/1.1" 201 0 "" "skopeo/1.11.1"
 ----
 
-Shut down the container registry by stopping the `podman run` process.
+`podman run` 프로세스를 중지하여 컨테이너 레지스트리를 종료합니다.
 
-== 컨테이너 삭제 (설명)
+== 컨테이너 삭제 (옵션)
 
-Skopeo can delete containers from repositories without requiring to have a Docker host.
+Skopeo는 Docker 호스트가 없어도 저장소에서 컨테이너를 삭제할 수 있습니다.
 
-This operation is not always supported and requires credentials as it's an operation that modifies the repository.
+이 작업은 레지스트리를 수정하는 작업이므로 레지스트리에 대한 자격 증명이 필요합니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]

@@ -2,7 +2,7 @@
 
 :project-name: tutorial-app
 
-Containerfile (또는 Dockerfile)은 컨테이너 이미지를 빌드하는 데 사용되는 정의를 명시하는 파일입니다. 세 가지 주요 키워드/명령을 사용합니다.:
+Containerfile (또는 Dockerfile)은 컨테이너 이미지를 빌드하는 데 사용되는 정의를 명시하는 파일입니다. 세 가지 주요 키워드/명령을 사용합니다.
 
 * FROM: 현재의 이미지를 빌드하는 데 사용되는 기본 이미지를 명시
 * COPY: 이미지에 넣을 파일을 명시
@@ -10,11 +10,10 @@ Containerfile (또는 Dockerfile)은 컨테이너 이미지를 빌드하는 데 
 
 [TIP]
 ====
-Sometimes people ask when to use ADD and when to use COPY. Both of them can be used to copy files from the source to destination, but:
+때때로 사람들은 언제 ADD를 사용하고 언제 COPY를 사용해야 하는지 묻습니다. 둘 다 소스에서 대상으로 파일을 복사하는 데 사용할 수 있지만:
 
-* COPY: Simple copy of local files into the container
-* ADD: Will also extract local tar files and supports remote URL. 
-It is less obvious thus it is preferable to use COPY unless you specifically need these features
+* COPY: 로컬 파일을 컨테이너로 간단히 복사합니다.
+* ADD: 로컬 tar 파일도 추출하고 원격 URL도 지원합니다. 덜 명확하므로 이러한 기능이 특별히 필요하지 않은 한 COPY를 사용하는 것이 좋습니다.
 ====
 
 == 컨테이너화할 애플리케이션 생성
@@ -30,7 +29,7 @@ cd {project-name}
 
 IMPORTANT:  튜토리얼의 나머지 모든 부분은 방금 만든 프로젝트 폴더 내부에서 작업힙니다.  예를 들어, `{project-name}`.
 
-이 애플리케이션을 배포할 준비를 하려면 다음과 같이 패키징해 보겠습니다.:
+이 애플리케이션을 배포할 준비를 하려면 다음과 같이 패키징해 보겠습니다.
 
 [.console-input]
 [source,bash,subs="+macros,+attributes"]
