@@ -1,0 +1,96 @@
+oc adm policy add-scc-to-user anyuid user1 
+oc adm policy add-scc-to-user anyuid user2 
+oc adm policy add-scc-to-user anyuid user3 
+oc adm policy add-scc-to-user anyuid user4 
+oc adm policy add-scc-to-user anyuid user6 
+oc adm policy add-scc-to-user anyuid user7 
+oc adm policy add-scc-to-user anyuid user8 
+oc adm policy add-scc-to-user anyuid user9 
+oc adm policy add-scc-to-user anyuid user10 
+oc adm policy add-scc-to-user anyuid user5 
+oc adm policy add-scc-to-user anyuid user11 
+oc adm policy add-scc-to-user anyuid user12 
+oc adm policy add-scc-to-user anyuid user13 
+oc adm policy add-scc-to-user anyuid user14 
+oc adm policy add-scc-to-user anyuid user15 
+oc adm policy add-scc-to-user anyuid user16 
+oc adm policy add-scc-to-user anyuid user22 
+oc adm policy add-scc-to-user anyuid user21 
+oc adm policy add-scc-to-user anyuid user19 
+oc adm policy add-scc-to-user anyuid user20 
+oc adm policy add-scc-to-user anyuid user18 
+oc adm policy add-scc-to-user anyuid user17 
+oc adm policy add-scc-to-user anyuid user23 
+oc adm policy add-scc-to-user anyuid user24 
+oc adm policy add-scc-to-user anyuid user25 
+oc adm policy add-scc-to-user anyuid user26 
+oc adm policy add-scc-to-user anyuid user27 
+oc adm policy add-scc-to-user anyuid user28 
+oc adm policy add-scc-to-user anyuid user29
+oc adm policy add-scc-to-user anyuid user30 
+
+
+
+oc new-project argocd-user1
+oc new-project argocd-user2
+oc new-project argocd-user3
+oc new-project argocd-user4
+oc new-project argocd-user5
+oc new-project argocd-user6
+oc new-project argocd-user7
+oc new-project argocd-user8
+oc new-project argocd-user9
+oc new-project argocd-user10
+oc new-project argocd-user11
+oc new-project argocd-user12
+oc new-project argocd-user13
+oc new-project argocd-user14
+oc new-project argocd-user15
+oc new-project argocd-user16
+oc new-project argocd-user17
+oc new-project argocd-user18
+oc new-project argocd-user19
+oc new-project argocd-user20
+oc new-project argocd-user21
+oc new-project argocd-user22
+oc new-project argocd-user23
+oc new-project argocd-user24
+oc new-project argocd-user25
+oc new-project argocd-user26
+oc new-project argocd-user27
+oc new-project argocd-user28
+oc new-project argocd-user29
+oc new-project argocd-user30
+
+
+
+oc label namespace argocd-user1 argocd.argoproj.io/managed-by=retail-user1
+oc label namespace argocd-user2 argocd.argoproj.io/managed-by=retail-user2 
+oc label namespace argocd-user3 argocd.argoproj.io/managed-by=retail-user3 
+oc label namespace argocd-user4 argocd.argoproj.io/managed-by=retail-user4 
+oc label namespace argocd-user5 argocd.argoproj.io/managed-by=retail-user5 
+oc label namespace argocd-user6 argocd.argoproj.io/managed-by=retail-user6 
+oc label namespace argocd-user7 argocd.argoproj.io/managed-by=retail-user7 
+oc label namespace argocd-user8 argocd.argoproj.io/managed-by=retail-user8 
+oc label namespace argocd-user9 argocd.argoproj.io/managed-by=retail-user9 
+oc label namespace argocd-user10  argocd.argoproj.io/managed-by=retail-user11 
+oc label namespace argocd-user11  argocd.argoproj.io/managed-by=retail-user10 
+oc label namespace argocd-user12  argocd.argoproj.io/managed-by=retail-user12 
+oc label namespace argocd-user13  argocd.argoproj.io/managed-by=retail-user13 
+oc label namespace argocd-user14  argocd.argoproj.io/managed-by=retail-user14 
+oc label namespace argocd-user15  argocd.argoproj.io/managed-by=retail-user15 
+oc label namespace argocd-user16  argocd.argoproj.io/managed-by=retail-user16 
+oc label namespace argocd-user17 argocd.argoproj.io/managed-by=retail-user17 
+oc label namespace argocd-user18  argocd.argoproj.io/managed-by=retail-user18 
+oc label namespace argocd-user19  argocd.argoproj.io/managed-by=retail-user19 
+oc label namespace argocd-user20  argocd.argoproj.io/managed-by=retail-user20 
+oc label namespace argocd-user21  argocd.argoproj.io/managed-by=retail-user21 
+oc label namespace argocd-user22  argocd.argoproj.io/managed-by=retail-user22 
+oc label namespace argocd-user23  argocd.argoproj.io/managed-by=retail-user23 
+oc label namespace argocd-user24  argocd.argoproj.io/managed-by=retail-user24 
+oc label namespace argocd-user25 argocd.argoproj.io/managed-by=retail-user25 
+oc label namespace argocd-user26 argocd.argoproj.io/managed-by=retail-user26 
+oc label namespace argocd-user27 argocd.argoproj.io/managed-by=retail-user27 
+oc label namespace argocd-user28 argocd.argoproj.io/managed-by=retail-user28 
+oc label namespace argocd-user29 argocd.argoproj.io/managed-by=retail-user29 
+oc label namespace argocd-user30 argocd.argoproj.io/managed-by=retail-user30
